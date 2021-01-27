@@ -39,13 +39,6 @@ def update_board(board,move,character):
     new_board = [place.replace(str(move), character) for place in board]
     return new_board
 
-def play_again():
-    play_again = input('Would you like to play again? (Y/N)').upper
-    if play_again == 'Y':
-        return True
-    elif play_again == 'N':
-        return False
-
 def check_winner(board,moves):
     #possible wins
     row1 = [1,2,3]
@@ -82,7 +75,6 @@ def check_winner(board,moves):
         winner =  False
     return winner
 
-
 def main():
     while True:
         print('LETS PLAY TIC TAC TOE!')
@@ -114,29 +106,17 @@ def main():
                     print(b)
 
                 player_won = check_winner(board,player_moves)
-                print(player_won)
                 computer_won = check_winner(board,computer_moves)
-                print(computer_won)
 
                 if player_won:
                     print('YOU WON!')
-                    play = play_again()
-                    if play:
-                        main()
-                    else:
-                        exit()
+                    exit()
                 elif computer_won:
                     print('YOU LOSE')
-                    play = play_again()
-                    if play:
-                        main()
-                    else:
-                        exit()
-
-
+                    exit()
             if not possible_moves:             
                 print("It's a Tie!!")
-                play_again()
+                exit()
                 
 
 
